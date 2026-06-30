@@ -23,8 +23,12 @@ defmodule Sink.Router do
 
   plug :dispatch
 
+  # TODO: How do we get query string bits into handlers?
+  # TODO: How do we write our own liveView impl?
+
   get "/", do: Sink.Controller.Home.call(conn)
 
+  # Stupid little inline example
   post "/api/v1/echo" do
     # send_resp(conn, 200, Jason.encode!(conn.body_params))
     body = :glazer_json.encode_to_iodata!(%{"status" => "ok", "value" => 42})
@@ -34,23 +38,8 @@ defmodule Sink.Router do
     |> send_resp(200, body)
   end
 
-  get "/api/v1/time" do
-    Sink.Controller.Api.ServerTime.call(conn)
-  end
-
-  # TODO: How do we get query string bits into handlers?
-  # TODO: How do we write our own liveView impl?
-  # TODO: Short form function calling with plug get/post?
-
-  get "/time" do
-    Sink.Controller.ServerTime.call(conn)
-  end
-
-  get "items" do
-    Sink.Controller.Items.call(conn)
-  end
-
-  match _ do
-    send_resp(conn, 404, "Missing")
-  end
+  get "/api/v1/time", do: Sink.Controller.Api.ServerTime.call(conn)
+  get "/time", do: Sink.Controller.ServerTime.call(conn)
+  get "items", do: Sink.Controller.Items.call(conn)
+  match _, do: send_resp(conn, 404, "Missing")
 end
