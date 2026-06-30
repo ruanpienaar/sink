@@ -50,37 +50,6 @@ defmodule Sink.Router do
     Sink.Controller.Items.call(conn)
   end
 
-  # NOTE: Silly little proxy example
-  # match _ do
-  #   Logger.info("CONN #{inspect(conn.params)}")
-
-  #   q = Map.get(conn.params, "q")
-
-  #   # TODO: what method
-  #   # TODO: what schema
-  #   # {:ok, response} = Req.get("https://www.bbc.co.uk/")
-  #   {:ok, response} = Req.get(q)
-
-  #   Logger.info("Response Headers #{inspect(response.headers)}}")
-
-  #   conn
-  #   |> Kernel.then(fn conn ->
-  #     Enum.reduce(
-  #       response.headers,
-  #       conn,
-  #       fn {header_key, header_values}, conn ->
-  #         # Logger.info("Header Key #{inspect(header_key)} Header Value #{inspect(header_value)}")
-  #         # put_resp_header(conn, header_key, header_value)
-
-  #         Enum.reduce(header_values, conn, fn hv, conn ->
-  #           put_resp_header(conn, header_key, hv)
-  #         end)
-  #       end
-  #     )
-  #   end)
-  #   |> send_resp(response.status, response.body)
-  # end
-
   match _ do
     send_resp(conn, 404, "Missing")
   end
