@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <title><%= title %></title>
+    </head>
+    <body>
+        <%= menu %>
+        <ul>
+            <%= for {key, value} <- items do %>
+                <li>key: <%= key %> value: <%= value %></li>
+            <% end %>
+        </ul>
+    </body>
+</html>
