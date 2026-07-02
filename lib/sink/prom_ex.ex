@@ -61,7 +61,7 @@ defmodule Sink.PromEx do
     [
       # PromEx built in plugins
       Plugins.Application,
-      Plugins.Beam
+      Plugins.Beam,
       # {Plugins.Phoenix, router: SinkWeb.Router, endpoint: SinkWeb.Endpoint},
       # Plugins.Ecto,
       # Plugins.Oban,
@@ -71,6 +71,7 @@ defmodule Sink.PromEx do
 
       # Add your own PromEx metrics plugins
       # Sink.Users.PromExPlugin
+      Sink.PromEx.Plugins.PlugRequests
     ]
   end
 

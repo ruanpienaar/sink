@@ -6,7 +6,6 @@ defmodule Sink.Application do
       [
         {Tz.UpdatePeriodically, []},
         Sink.PromEx,
-        # {Bandit, plug: Sink.HelloWorld, port: 4000}
         {Bandit, plug: Sink.Router, port: 4000}
       ],
       strategy: :one_for_one,
