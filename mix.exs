@@ -27,7 +27,8 @@ defmodule Sink.Mixfile do
       {:glazer, "~> 0.5", manager: :rebar3},
       {:prom_ex, "~> 1.12"},
       {:tz, "~> 0.28"},
-      {:req, "~> 0.6"}
+      {:req, "~> 0.6"},
+      {:tempo, github: "ruanpienaar/tempo", branch: "master"}
     ]
   end
 end

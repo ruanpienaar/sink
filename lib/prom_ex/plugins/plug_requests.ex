@@ -10,8 +10,8 @@ defmodule Sink.PromEx.Plugins.PlugRequests do
           "sink.failed.plug_request",
           event_name: [:sink, :failed, :plug_requests],
           description: "Total number of plug requests",
-          tags: [:status],
-          tag_values: fn %{status: status} -> %{status: status} end
+          tags: [:kind],
+          tag_values: fn %{kind: kind} -> %{kind: kind} end
         ),
         distribution(
           "sink.plug_request.process.stop.duration",

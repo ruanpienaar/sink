@@ -14,6 +14,7 @@ defmodule Sink.Router do
   # Here we expose the PromEx handler for /metrics so that metric data can be fetched.
   plug PromEx.Plug, prom_ex_module: Sink.PromEx
   plug Plug.Logger
+  plug Sink.Plug.Tempo
   # plug Sink.Plug.RequestSpan
   plug :match
 
